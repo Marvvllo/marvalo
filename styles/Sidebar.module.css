@@ -30,9 +30,24 @@
   position: relative;
 }
 
-.item:hover img {
+.item::before {
+  content: "";
+  position: absolute;
+  left: -0.5em;
+  bottom: 1em;
   background-color: var(--clr-primary);
-  border-radius: 0.5em;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  width: 0.25em;
+  height: calc(2.5rem - 1em);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease-in-out;
+}
+
+.item:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
 }
 
 .item img {
@@ -42,7 +57,13 @@
   object-fit: contain;
 }
 
-.item.active::before {
+.item:hover img,
+.item.active img {
+  background-color: var(--clr-primary);
+  border-radius: 0.5em;
+}
+
+.item.active::after {
   content: "";
   position: absolute;
   left: -0.5em;
