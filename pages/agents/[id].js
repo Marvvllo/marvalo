@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Sidebar from "../Sidebar";
+import Sidebar from "../../components/Sidebar";
 import styles from "../../styles/Details.module.css";
 
 export const getStaticPaths = async () => {

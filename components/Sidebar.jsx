@@ -1,4 +1,4 @@
-import SidebarItem from "../components/SidebarItem";
+import SidebarItem from "./SidebarItem";
 import styles from "../styles/Sidebar.module.css";
 import Link from "next/link";
 import Image from "next/image";

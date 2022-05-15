@@ -1,6 +1,6 @@
 import SidebarItem from "../components/SidebarItem";
 import styles from "../styles/Home.module.css";
-import Sidebar from "./Sidebar";
+import Sidebar from "../components/Sidebar";
 
 export const getStaticProps = async () => {
   const jsonRes = await fetch(
