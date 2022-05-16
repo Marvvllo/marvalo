@@ -1,0 +1,15 @@
+.abilityDetail {
+  place-self: center;
+  max-width: 75%;
+}
+
+.abilityDetail h3 {
+  font-family: "Valorant";
+  font-size: 1.75rem;
+}
+
+.abilityDetail p {
+  font-size: 1.25rem;
+  opacity: 0.75;
+  margin-top: 1em;
+}

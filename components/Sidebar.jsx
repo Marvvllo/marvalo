@@ -7,13 +7,25 @@ import { useRouter } from "next/router";
 // JSX Templates for mapping the agents
 const mapAgent = (agent) => <SidebarItem agent={agent} />;
 
-const Sidebar = ({
-  controllers,
-  duelists,
-  initiators,
-  sentinels,
-}) => {
+const Sidebar = ({ agents }) => {
   const { asPath } = useRouter();
+  // sort agents by their roles
+  const controllers = agents.filter(({ role }) => {
+    return role.displayName === "Controller";
+  });
+
+  const duelists = agents.filter(({ role }) => {
+    return role.displayName === "Duelist";
+  });
+
+  const initiators = agents.filter(({ role }) => {
+    return role.displayName === "Initiator";
+  });
+
+  const sentinels = agents.filter(({ role }) => {
+    return role.displayName === "Sentinel";
+  });
+
   return (
     <div className={styles.container}>
       <Link href={"/"}>
