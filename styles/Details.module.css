@@ -55,8 +55,6 @@
 }
 
 .ability {
-  position: relative;
-  overflow: hidden;
   outline: 2px solid var(--clr-bg-var);
   display: grid;
   place-self: center;
@@ -66,24 +64,11 @@
   transition: all 300ms ease-in-out;
 }
 
-.ability::after {
-  content: "";
-  position: absolute;
+.ability:hover {
   background-color: var(--clr-primary);
-  left: -12%;
-  top: 0;
-  width: 120%;
-  aspect-ratio: 1;
-  transform: translateX(-100%) skew(-10deg);
-  transition: transform 300ms ease-in-out;
-}
-
-.ability:hover::after {
-  transform: skew(-10deg);
 }
 
 .ability img {
-  z-index: 2;
   object-fit: contain;
   opacity: 0.3;
   filter: brightness(0);
