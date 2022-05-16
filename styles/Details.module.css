@@ -5,9 +5,21 @@
 
 /* Main Content (middle) */
 .abilitiesContainer {
+  position: relative;
   display: grid;
   grid-template-rows: 5rem 2fr 1fr;
   height: 100vh;
+}
+
+.abilitiesContainer::before {
+  content: "";
+  z-index: 5;
+  position: absolute;
+  left: 0;
+  top: 6rem;
+  background-color: var(--clr-bg-var);
+  width: 100%;
+  height: 2px;
 }
 
 .abilitiesContainer h2 {
