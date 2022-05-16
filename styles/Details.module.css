@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: 4rem 4fr 1fr;
+  grid-template-columns: 4rem 4.5fr 1fr;
 }
 
 /* Main Content (middle) */
