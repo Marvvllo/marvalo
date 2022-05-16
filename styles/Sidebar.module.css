@@ -22,59 +22,6 @@
   gap: 0.5em;
 }
 
-.item {
-  width: 100%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: 50%;
-  position: relative;
-}
-
-.item::before {
-  content: "";
-  position: absolute;
-  left: -0.5em;
-  bottom: 1em;
-  background-color: var(--clr-primary);
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-  width: 0.25em;
-  height: calc(2.5rem - 1em);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 300ms ease-in-out;
-}
-
-.item:hover::before {
-  opacity: 1;
-  transform: scaleY(1);
-}
-
-.item img {
-  border-radius: 50%;
-  background-color: var(--clr-bg);
-  transition: all 300ms ease-in-out;
-  object-fit: contain;
-}
-
-.item:hover img,
-.item.active img {
-  background-color: var(--clr-primary);
-  border-radius: 0.5em;
-}
-
-.item.active::after {
-  content: "";
-  position: absolute;
-  left: -0.5em;
-  bottom: 0.25em;
-  background-color: var(--clr-primary);
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-  width: 0.25em;
-  height: calc(4rem - 1em);
-}
-
 .logo {
   position: relative;
 }
@@ -109,4 +56,57 @@
 
 .logo:hover::after {
   transform: scaleX(1);
+}
+
+.item {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
+
+.item::before {
+  content: "";
+  position: absolute;
+  left: -0.5em;
+  bottom: 1em;
+  background-color: var(--clr-primary);
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  width: 0.25em;
+  height: calc(2.5rem - 1em);
+  transform: scale(0);
+  transform-origin: left;
+  transition: transform 300ms ease-in-out;
+}
+
+.item:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.item img {
+  border-radius: 50%;
+  background-color: var(--clr-bg);
+  transition: all 300ms ease-in-out;
+  object-fit: contain;
+}
+
+.item:hover img,
+.item.active img {
+  background-color: var(--clr-primary);
+  border-radius: 0.5em;
+}
+
+.item.active::after {
+  content: "";
+  position: absolute;
+  left: -0.5em;
+  bottom: 0.25em;
+  background-color: var(--clr-primary);
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  width: 0.25em;
+  height: calc(4rem - 1em);
 }
