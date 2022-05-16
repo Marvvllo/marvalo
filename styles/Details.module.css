@@ -1,67 +1,107 @@
 .container {
-  position: relative;
   display: grid;
   grid-template-columns: 4rem 4fr 1fr;
 }
 
-.content {
-  height: 150vh;
-}
-
-.agentDetail {
+/* Main Content (middle) */
+.abilitiesContainer {
   display: grid;
-  grid-template-rows: 2fr 2fr 3fr;
-  place-items: center;
-  position: sticky;
-  top: 0;
-  right: 0;
+  grid-template-rows: 5rem 2fr 1fr;
   height: 100vh;
-  width: 15rem;
-  overflow: hidden;
-  background-color: var(--clr-bg-var);
 }
 
-.agentDetail h1 {
+.abilitiesContainer h2 {
+  align-self: center;
   font-family: "Valorant";
-  /* align-self: flex-end; */
+  font-size: 2.5rem;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 
-.agentPortrait {
-  width: 150%;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("../public/images/bg_agent.jpg");
+.abilityDetail {
+  place-self: center;
+  max-width: 75%;
 }
 
-.agentPortrait img {
-  transform: translateX(2.5%);
+.abilityDetail h3 {
+  font-family: "Valorant";
+  font-size: 1.75rem;
 }
 
-.agentRoleContainer {
-  width: 100%;
-  padding-inline: 1.5rem;
+.abilityDetail p {
+  font-size: 1.25rem;
+  opacity: 0.75;
+  margin-top: 1em;
 }
 
-.agentRole {
+.abilitiesList {
+  position: relative;
   display: flex;
-  gap: 0.25em;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  padding-inline: auto;
 }
 
-.agentRole p {
-  align-self: flex-start;
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
+.abilitiesList ::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  background-color: var(--clr-bg-var);
+  width: 100%;
+  height: 2px;
 }
 
-.agentRole h2 {
-  font-family: "Valorant";
-  font-size: 1.5rem;
-  text-align: center;
+.ability {
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid var(--clr-bg-var);
+  display: grid;
+  place-self: center;
+  height: 5rem;
+  aspect-ratio: 1;
+  background-color: var(--clr-bg);
+  transition: all 300ms ease-in-out;
 }
 
-.agentRole img {
-  max-height: 1.25em;
+.ability::after {
+  content: "";
+  position: absolute;
+  background-color: var(--clr-primary);
+  left: -12%;
+  top: 0;
+  width: 120%;
+  aspect-ratio: 1;
+  transform: translateX(-100%) skew(-10deg);
+  transition: transform 300ms ease-in-out;
+}
+
+.ability:hover::after {
+  transform: skew(-10deg);
+}
+
+.ability img {
+  z-index: 2;
   object-fit: contain;
-  transform: translateY(-10%);
+  opacity: 0.3;
+  filter: brightness(0);
+  transform: scale(0.8);
+  transition: all 300ms ease-in-out;
+}
+
+.ability:hover img {
+  opacity: 1;
+  filter: brightness(1);
+  transform: scale(0.9);
+}
+
+.ability.active {
+  background-color: var(--clr-primary);
+}
+
+.ability.active img {
+  opacity: 1;
+  filter: brightness(1);
 }

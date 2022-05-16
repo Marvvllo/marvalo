@@ -1,0 +1,58 @@
+/* Agent Details (right side) */
+.agentDetail {
+  display: grid;
+  grid-template-rows: 2fr 2fr 3fr;
+  place-items: center;
+  position: sticky;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 15rem;
+  overflow: hidden;
+  background-color: var(--clr-bg-var);
+}
+
+.agentDetail h1 {
+  font-family: "Valorant";
+  /* align-self: flex-end; */
+}
+
+.agentPortrait {
+  width: 150%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../public/images/bg_agent.jpg");
+}
+
+.agentPortrait img {
+  transform: translateX(2.5%);
+}
+
+.agentRoleContainer {
+  width: 100%;
+  padding-inline: 1.5rem;
+}
+
+.agentRole {
+  display: flex;
+  gap: 0.25em;
+}
+
+.agentRole p {
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.agentRole h2 {
+  font-family: "Valorant";
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.agentRole img {
+  max-height: 1.25em;
+  object-fit: contain;
+  transform: translateY(-10%);
+}

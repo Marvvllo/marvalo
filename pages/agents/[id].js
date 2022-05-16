@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Image from "next/image";
 import Sidebar from "../../components/Sidebar";
+import AgentDetail from "../../components/AgentDetail";
 import styles from "../../styles/Details.module.css";
 
 export const getStaticPaths = async () => {
@@ -54,6 +56,8 @@ export const getStaticProps = async (context) => {
   const currentAgentRes = await currentAgentJson.json();
   const currentAgent = currentAgentRes.data;
 
+  const abilities = currentAgent.abilities.slice(0, 4);
+
   return {
     props: {
       controllers,
@@ -61,17 +65,77 @@ export const getStaticProps = async (context) => {
       initiators,
       sentinels,
       agent: currentAgent,
+      abilities,
     },
   };
 };
 
+const AbilityDetails = ({ abilities, abilitySlot }) => {
+  let currentAbility;
+  let abilityKey;
+  currentAbility = abilities.find(
+    (ability) => ability.slot == abilitySlot
+  );
+  switch (currentAbility.slot) {
+    case "Ability1":
+      abilityKey = "Q - ";
+      break;
+    case "Ability2":
+      abilityKey = "E - ";
+      break;
+    case "Grenade":
+      abilityKey = "C - ";
+      break;
+    case "Ultimate":
+      abilityKey = "X - ";
+      break;
+  }
+  return (
+    <div className={styles.abilityDetail}>
+      <h3 className={styles.abilityName}>
+        {abilityKey + currentAbility.displayName}
+      </h3>
+      <p className={styles.abilityDesc}>
+        {currentAbility.description}
+      </p>
+    </div>
+  );
+};
+
 const Details = ({
   agent,
+  abilities,
   controllers,
   duelists,
   initiators,
   sentinels,
 }) => {
+  const [abilitySlot, setAbilitySlot] = useState("Ability1");
+  const abilityClickHandler = (abilityClicked) => {
+    setAbilitySlot(abilityClicked);
+  };
+
+  const mapAbilities = (ability) => {
+    if (abilitySlot == ability.slot) {
+      return (
+        <div
+          onClick={() => abilityClickHandler(ability.slot)}
+          className={`${styles.ability} ${styles.active}`}
+        >
+          <Image src={ability.displayIcon} width={120} height={120} />
+        </div>
+      );
+    }
+    return (
+      <div
+        onClick={() => abilityClickHandler(ability.slot)}
+        className={styles.ability}
+      >
+        <Image src={ability.displayIcon} width={120} height={120} />
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       <Sidebar
@@ -81,30 +145,18 @@ const Details = ({
         sentinels={sentinels}
       />
       <main className={styles.content}>
-        <p>{agent.description}</p>
-      </main>
-      <div className={styles.agentDetail}>
-        <h1>{agent.displayName}</h1>
-        <div className={styles.agentPortrait}>
-          <Image
-            src={agent.fullPortraitV2}
-            width={500}
-            height={500}
+        <div className={styles.abilitiesContainer}>
+          <h2 className={styles.title}>Abilities</h2>
+          <AbilityDetails
+            abilities={abilities}
+            abilitySlot={abilitySlot}
           />
-        </div>
-
-        <div className={styles.agentRoleContainer}>
-          <p>/ / ROLE</p>
-          <div className={styles.agentRole}>
-            <h2>{agent.role.displayName}</h2>
-            <Image
-              src={agent.role.displayIcon}
-              width={500}
-              height={500}
-            />
+          <div className={styles.abilitiesList}>
+            {abilities.map(mapAbilities)}
           </div>
         </div>
-      </div>
+      </main>
+      <AgentDetail agent={agent} />
     </div>
   );
 };
