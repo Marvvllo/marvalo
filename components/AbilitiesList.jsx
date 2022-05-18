@@ -1,5 +1,6 @@
 import styles from "../styles/AbilitiesList.module.css";
 import Image from "next/image";
+import { v4 as uuid } from "uuid";
 
 const AbilitiesList = ({
   abilities,
@@ -17,6 +18,7 @@ const AbilitiesList = ({
             <div
               onClick={() => abilityClickHandler(ability.slot)}
               className={`${styles.ability} ${styles.active}`}
+              key={uuid()}
             >
               <Image
                 src={ability.displayIcon}
@@ -30,6 +32,7 @@ const AbilitiesList = ({
           <div
             onClick={() => abilityClickHandler(ability.slot)}
             className={styles.ability}
+            key={uuid()}
           >
             <Image
               src={ability.displayIcon}

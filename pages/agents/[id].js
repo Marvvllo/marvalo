@@ -4,6 +4,7 @@ import AgentDetail from "../../components/AgentDetail";
 import styles from "../../styles/Details.module.css";
 import AbilitiesList from "../../components/AbilitiesList";
 import AbilityDetails from "../../components/AbilityDetails";
+import Head from "next/head";
 
 export const getStaticPaths = async () => {
   const jsonRes = await fetch(
@@ -56,6 +57,9 @@ const Details = ({ allAgents, agent, abilities }) => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Marvalo - {agent.displayName}</title>
+      </Head>
       <Sidebar agents={allAgents} />
       <main className={styles.content}>
         <div className={styles.abilitiesContainer}>
