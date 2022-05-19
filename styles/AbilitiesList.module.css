@@ -44,7 +44,7 @@
 
 .ability:hover::after,
 .ability.active::after {
-  transform: skew(-30deg);
+  transform: translate(0) skew(-30deg);
 }
 
 .ability img {
