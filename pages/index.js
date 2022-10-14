@@ -1,6 +1,7 @@
 import SidebarItem from "../components/SidebarItem";
 import styles from "../styles/Home.module.css";
 import Sidebar from "../components/Sidebar";
+import Head from "next/head";
 
 export const getStaticProps = async () => {
   const jsonRes = await fetch(
@@ -18,9 +19,14 @@ export const getStaticProps = async () => {
 
 const Home = ({ agents }) => {
   return (
-    <div className={styles.container}>
-      <Sidebar agents={agents} />
-    </div>
+    <>
+      <Head>
+        <link rel="shortcut icon" href="/public/favicon.ico" />
+      </Head>
+      <div className={styles.container}>
+        <Sidebar agents={agents} />
+      </div>
+    </>
   );
 };
 

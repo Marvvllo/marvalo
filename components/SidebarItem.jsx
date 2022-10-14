@@ -6,9 +6,6 @@ import { useEffect } from "react";
 
 const SidebarItem = ({ agent }) => {
   const { asPath } = useRouter();
-  useEffect(() => {
-    console.log(asPath);
-  }, []);
 
   if (asPath == "/agents/" + agent.uuid) {
     return (

@@ -6,7 +6,12 @@ const AgentDetail = ({ agent }) => {
     <div className={styles.agentDetail}>
       <h1>{agent.displayName}</h1>
       <div className={styles.agentPortrait}>
-        <Image src={agent.fullPortraitV2} width={500} height={500} />
+        <Image
+          loading="eager"
+          src={agent.fullPortrait}
+          width={500}
+          height={500}
+        />
       </div>
 
       <div className={styles.agentRoleContainer}>
