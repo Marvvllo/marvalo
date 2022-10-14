@@ -22,6 +22,7 @@ const Home = ({ agents }) => {
     <>
       <Head>
         <link rel="shortcut icon" href="/public/favicon.ico" />
+        <title>Marvalo</title>
       </Head>
       <div className={styles.container}>
         <Sidebar agents={agents} />
